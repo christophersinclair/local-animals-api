@@ -12,7 +12,7 @@ public class Animal {
         NOCTURNAL, DIURNAL, CREPUSCULAR, AURORAL
     }
 
-    private enum ScienficClass {
+    private enum ScientificClass {
         AGNATHA,
         CHRONDRICHYTES,
         OSEICHTHYES,
@@ -49,8 +49,64 @@ public class Animal {
     private String description;
     private String habitat;
     private String funFact;
-    private File frontTracks;
-    private File backTracks;
-    private File range;
-    private File animalImage;
+    private String frontTracksImageID;
+    private String backTracksImageID;
+    private String rangeImageID;
+    private String animalImageID;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getHabitat() {
+        return habitat;
+    }
+
+    public void setHabitat(String habitat) {
+        this.habitat = habitat;
+    }
+
+    public String getFunFact() {
+        return funFact;
+    }
+
+    public void setFunFact(String funFact) {
+        this.funFact = funFact;
+    }
+
+    public String getFrontTracksImageID() {
+        return frontTracksImageID;
+    }
+
+    public void setFrontTracksImageID(String frontTracksImageID) {
+        this.frontTracksImageID = frontTracksImageID;
+    }
+
+    public String getBackTracksImageID() {
+        return backTracksImageID;
+    }
+
+    public void setBackTracksImageID(String backTracksImageID) {
+        this.backTracksImageID = backTracksImageID;
+    }
+
+    public String getRangeImageID() {
+        return rangeImageID;
+    }
+
+    public void setRangeImageID(String rangeImageID) {
+        this.rangeImageID = rangeImageID;
+    }
+
+    public String getAnimalImageID() {
+        return animalImageID;
+    }
+
+    public void setAnimalImageID(String animalImageID) {
+        this.animalImageID = animalImageID;
+    }
 }

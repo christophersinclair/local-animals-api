@@ -2,17 +2,24 @@ package com.upendiproject.localanimalapi.controller;
 
 import com.upendiproject.localanimalapi.model.Animal;
 import com.upendiproject.localanimalapi.model.Sighting;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Controller
 public class LocalAnimalController extends BaseController {
 
     @GetMapping("/localanimals")
     public @ResponseBody List<Animal> localAnimals() {
-        return new ArrayList<Animal>();
+        Animal testAnimal = new Animal();
+        testAnimal.setDescription("Lion");
+        testAnimal.setHabitat("Africa");
+        List<Animal> testAnimalList = new ArrayList<>();
+        testAnimalList.add(testAnimal);
+        return testAnimalList;
     }
 
     @GetMapping("/localsightings")
