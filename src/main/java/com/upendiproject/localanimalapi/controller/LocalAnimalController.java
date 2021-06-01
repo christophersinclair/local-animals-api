@@ -1,6 +1,5 @@
 package com.upendiproject.localanimalapi.controller;
 
-import com.upendiproject.localanimalapi.exception.LocalAnimalApiException;
 import com.upendiproject.localanimalapi.model.Animal;
 import com.upendiproject.localanimalapi.model.Sighting;
 import com.upendiproject.localanimalapi.service.AddSightingService;

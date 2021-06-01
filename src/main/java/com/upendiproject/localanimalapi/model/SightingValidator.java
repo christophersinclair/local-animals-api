@@ -6,7 +6,7 @@ public class SightingValidator implements Predicate<Sighting> {
 
     @Override
     public boolean test(Sighting sighting) {
-        if (sighting.getSightingLocation() == null || sighting.getSightingAnimalList().isEmpty()) {
+        if (sighting.getSightingLocationID() == null || sighting.getSightingAnimalID() == null) {
             return false;
         }
         return true;

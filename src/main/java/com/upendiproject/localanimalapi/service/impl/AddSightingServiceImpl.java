@@ -7,10 +7,11 @@ import com.upendiproject.localanimalapi.model.SightingValidator;
 import com.upendiproject.localanimalapi.service.AddSightingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import java.util.UUID;
 import java.util.function.Predicate;
 
+@Service
 public class AddSightingServiceImpl implements AddSightingService {
 
     private static final Logger logger = LoggerFactory.getLogger(AddSightingServiceImpl.class);
@@ -20,19 +21,19 @@ public class AddSightingServiceImpl implements AddSightingService {
 
     }
 
-    public void addAnimalToSighting(UUID sightingID, Animal animal) {
+    public void addAnimalToSighting(Long sightingID, Animal animal) {
 
     }
 
-    public void addAnimalToSighting(UUID sightingID, UUID animalID) {
+    public void addAnimalToSighting(Long sightingID, Long animalID) {
 
     }
 
-    public void addLocationToSighting(UUID sightingID, Location location) {
+    public void addLocationToSighting(Long sightingID, Location location) {
 
     }
 
-    public void addLocationToSighting(UUID sightingID, UUID locationID) {
+    public void addLocationToSighting(Long sightingID, Long locationID) {
 
     }
 

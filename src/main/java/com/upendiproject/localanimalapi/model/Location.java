@@ -1,23 +1,31 @@
 package com.upendiproject.localanimalapi.model;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+@Entity
+@Table(name = "Location")
 public class Location {
-    private UUID locationID;
-    private String locationDescription;
-    private double latitude;
-    private double longitude;
-    private List<Animal> animalsInLocation;
-    private List<Sighting> sightingsInLocation;
-    private Map<String, String> usersInLocation;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long locationID;
 
-    public UUID getLocationID() {
+    @Column(name = "description")
+    private String locationDescription;
+
+    @Column(name = "latitude")
+    private double latitude;
+
+    @Column(name="longitude")
+    private double longitude;
+
+    public Long getLocationID() {
         return locationID;
     }
 
-    public void setLocationID(UUID locationID) {
+    public void setLocationID(Long locationID) {
         this.locationID = locationID;
     }
 
@@ -45,27 +53,4 @@ public class Location {
         this.longitude = longitude;
     }
 
-    public List<Animal> getAnimalsInLocation() {
-        return animalsInLocation;
-    }
-
-    public void setAnimalsInLocation(List<Animal> animalsInLocation) {
-        this.animalsInLocation = animalsInLocation;
-    }
-
-    public List<Sighting> getSightingsInLocation() {
-        return sightingsInLocation;
-    }
-
-    public void setSightingsInLocation(List<Sighting> sightingsInLocation) {
-        this.sightingsInLocation = sightingsInLocation;
-    }
-
-    public Map<String, String> getUsersInLocation() {
-        return usersInLocation;
-    }
-
-    public void setUsersInLocation(Map<String, String> usersInLocation) {
-        this.usersInLocation = usersInLocation;
-    }
 }

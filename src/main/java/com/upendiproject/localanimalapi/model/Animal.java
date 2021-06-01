@@ -1,19 +1,31 @@
 package com.upendiproject.localanimalapi.model;
 
-import java.util.UUID;
+import org.springframework.lang.NonNull;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Animal")
 public class Animal {
 
-    private UUID animalID;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long animalID;
 
+    @Enumerated(EnumType.STRING)
+    private Diet diet;
     private enum Diet {
         HERBIVORE, CARNIVORE, OMNIVORE
     }
 
+    @Enumerated(EnumType.STRING)
+    private Activity activity;
     private enum Activity {
         NOCTURNAL, DIURNAL, CREPUSCULAR, AURORAL
     }
 
+    @Enumerated(EnumType.STRING)
+    private ScientificClass scientificClass;
     private enum ScientificClass {
         AGNATHA,
         CHRONDRICHYTES,
@@ -24,6 +36,8 @@ public class Animal {
         MAMMALIA
     }
 
+    @Enumerated(EnumType.STRING)
+    private ConservationStatus conservationStatus;
     private enum ConservationStatus {
         NOT_EVALUATED,
         DATA_DEFICIENT,
@@ -36,6 +50,8 @@ public class Animal {
         EXTINCT
     }
 
+    @Enumerated(EnumType.STRING)
+    private Biome biome;
     private enum Biome {
         TROPICAL_RAINFOREST,
         TEMPERATE_FOREST,
@@ -48,19 +64,26 @@ public class Animal {
         MARINE
     }
 
+    @Column(name = "description") @NonNull
     private String description;
+    @Column(name = "habitat") @NonNull
     private String habitat;
+    @Column(name = "fun_fact")
     private String funFact;
+    @Column(name = "front_tracks_image_id")
     private String frontTracksImageID;
+    @Column(name = "back_tracks_image_id")
     private String backTracksImageID;
+    @Column(name = "range_image_id")
     private String rangeImageID;
+    @Column(name = "animal_image_id")
     private String animalImageID;
 
-    public UUID getAnimalID() {
+    public Long getAnimalID() {
         return animalID;
     }
 
-    public void setAnimalID(UUID animalID) {
+    public void setAnimalID(Long animalID) {
         this.animalID = animalID;
     }
 
