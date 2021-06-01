@@ -2,14 +2,24 @@ package com.upendiproject.localanimalapi.model;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class Location {
+    private UUID locationID;
     private String locationDescription;
     private double latitude;
     private double longitude;
     private List<Animal> animalsInLocation;
     private List<Sighting> sightingsInLocation;
     private Map<String, String> usersInLocation;
+
+    public UUID getLocationID() {
+        return locationID;
+    }
+
+    public void setLocationID(UUID locationID) {
+        this.locationID = locationID;
+    }
 
     public String getLocationDescription() {
         return locationDescription;

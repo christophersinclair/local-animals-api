@@ -1,8 +1,10 @@
 package com.upendiproject.localanimalapi.model;
 
-import java.io.File;
+import java.util.UUID;
 
 public class Animal {
+
+    private UUID animalID;
 
     private enum Diet {
         HERBIVORE, CARNIVORE, OMNIVORE
@@ -53,6 +55,14 @@ public class Animal {
     private String backTracksImageID;
     private String rangeImageID;
     private String animalImageID;
+
+    public UUID getAnimalID() {
+        return animalID;
+    }
+
+    public void setAnimalID(UUID animalID) {
+        this.animalID = animalID;
+    }
 
     public String getDescription() {
         return description;
