@@ -5,7 +5,7 @@ import org.springframework.lang.NonNull;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Animal")
+@Table(name = "Animal", schema = "upendi")
 public class Animal {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)

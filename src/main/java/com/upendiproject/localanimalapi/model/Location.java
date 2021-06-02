@@ -1,12 +1,9 @@
 package com.upendiproject.localanimalapi.model;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 @Entity
-@Table(name = "Location")
+@Table(name = "Location", schema = "upendi")
 public class Location {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

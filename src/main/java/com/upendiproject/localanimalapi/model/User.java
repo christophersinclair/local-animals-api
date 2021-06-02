@@ -5,15 +5,15 @@ import java.util.UUID;
 
 public class User {
 
-    private UUID userID;
+    private Long userID;
     private List<Sighting> userSightings;
     private Location userLocation;
 
-    public UUID getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(UUID userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

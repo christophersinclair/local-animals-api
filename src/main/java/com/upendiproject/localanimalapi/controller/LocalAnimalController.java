@@ -3,16 +3,14 @@ package com.upendiproject.localanimalapi.controller;
 import com.upendiproject.localanimalapi.model.Animal;
 import com.upendiproject.localanimalapi.model.Sighting;
 import com.upendiproject.localanimalapi.service.AddSightingService;
+import com.upendiproject.localanimalapi.service.RetrieveSightingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +22,9 @@ public class LocalAnimalController extends BaseController {
 
     @Autowired
     private AddSightingService addSightingService;
+
+    @Autowired
+    RetrieveSightingService retrieveSightingService;
 
     @GetMapping("/localanimals")
     public @ResponseBody List<Animal> localAnimals() {
@@ -40,6 +41,11 @@ public class LocalAnimalController extends BaseController {
         return new ArrayList<Sighting>();
     }
 
+    @GetMapping("/find/sighting")
+    public @ResponseBody Sighting findSighting(@RequestParam("id") Long sightingID) {
+        return retrieveSightingService.getSightingFromDB(sightingID);
+    }
+
     @PostMapping("/add/sighting")
     public @ResponseBody ResponseEntity<String> addSighting(@RequestBody Sighting sighting) {
         if (addSightingService.isValidSighting(sighting)) {
@@ -51,5 +57,12 @@ public class LocalAnimalController extends BaseController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
     }
+
+    /* Need controllers for:
+    /add/animal
+    /add/location
+    /find/animal
+    /find/location
+     */
 
 }
