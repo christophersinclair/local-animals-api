@@ -1,5 +1,6 @@
 package com.upendiproject.localanimalapi.controller;
 
+import com.upendiproject.localanimalapi.exception.LocalAnimalApiException;
 import com.upendiproject.localanimalapi.model.Animal;
 import com.upendiproject.localanimalapi.model.Sighting;
 import com.upendiproject.localanimalapi.service.AddSightingService;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -56,6 +58,13 @@ public class LocalAnimalController extends BaseController {
         logger.error("Bad sighting add request - POST failed");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
+    }
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public @ResponseBody String handleMissingParams(MissingServletRequestParameterException ex) {
+        String name = ex.getParameterName();
+        logger.error("Parameter is missing from request: " + name);
+        return "Parameter is missing from request: '" + name + "'";
     }
 
     /* Need controllers for:
