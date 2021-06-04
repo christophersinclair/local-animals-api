@@ -2,7 +2,6 @@ package com.upendiproject.localanimalapi.controller;
 
 import com.upendiproject.localanimalapi.exception.StorageFileNotFoundException;
 import com.upendiproject.localanimalapi.service.FileStorageService;
-import org.apache.coyote.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
