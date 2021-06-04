@@ -27,7 +27,21 @@ public class FileUploadController {
         this.fileStorageService = fileStorageService;
     }
 
-    @PostMapping("/api/file/upload")
+    @PostMapping("/api/file-upload")
+    public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("sighting_id") Long sightingID) {
+        try {
+            fileStorageService.store(file, sightingID);
+            logger.info("Uploaded file successfully");
+            return new ResponseEntity<>("Uploaded file successfully", HttpStatus.OK);
+
+        } catch (Exception ex) {
+            logger.error("There was a problem uploading file: " + file.toString() + ". Exception: " + ex);
+            return new ResponseEntity<>("File upload failed", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
+    @PostMapping("/api/file-upload-with-sighting")
     public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
         try {
             fileStorageService.store(file);

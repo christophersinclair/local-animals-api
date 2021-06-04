@@ -7,4 +7,6 @@ public interface FileStorageService {
     void init();
 
     void store(MultipartFile multipartFile);
+
+    void store(MultipartFile multipartFile, Long sightingID);
 }
