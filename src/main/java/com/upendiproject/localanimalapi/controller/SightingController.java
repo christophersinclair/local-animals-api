@@ -2,6 +2,7 @@ package com.upendiproject.localanimalapi.controller;
 
 import com.upendiproject.localanimalapi.model.Sighting;
 import com.upendiproject.localanimalapi.service.AddSightingService;
+import com.upendiproject.localanimalapi.service.FileStorageService;
 import com.upendiproject.localanimalapi.service.RetrieveSightingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class SightingController {
@@ -22,6 +24,9 @@ public class SightingController {
 
     @Autowired
     RetrieveSightingService retrieveSightingService;
+
+    @Autowired
+    FileStorageService fileStorageService;
 
     @GetMapping("/api/find/sighting")
     public @ResponseBody
@@ -41,6 +46,21 @@ public class SightingController {
         return new ResponseEntity<>("Sighting add request failed", HttpStatus.BAD_REQUEST);
 
     }
+
+    @PostMapping("/api/add/sighting-with-file")
+    public @ResponseBody
+    ResponseEntity<String> addSightingWithFile(@RequestBody Sighting sighting, MultipartFile multipartFile) {
+        if (addSightingService.isValidSighting(sighting)) {
+            addSightingService.addSighting(sighting);
+            fileStorageService.store(multipartFile, sighting.getSightingID());
+            logger.info("Added sighting " + sighting.toString());
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        }
+        logger.error("Bad sighting add request - POST failed");
+        return new ResponseEntity<>("Sighting add request failed", HttpStatus.BAD_REQUEST);
+
+    }
+
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public @ResponseBody String handleMissingParams(MissingServletRequestParameterException ex) {
